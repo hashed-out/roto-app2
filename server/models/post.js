@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
   content: { type: String },
+  eventDate:{type:Date},
+  eventPoster:{type:Buffer},
+  venue:{type:String},
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   likes: [
     {

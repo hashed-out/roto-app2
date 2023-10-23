@@ -15,8 +15,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+
+
 
 const RegisterScreen = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -55,10 +59,10 @@ const RegisterScreen = () => {
     >
       <View style={{ marginTop: 50 }}>
         <Image
-          style={{ width: 150, height: 100, resizeMode: "contain" }}
-          source={{
-            uri: "https://freelogopng.com/images/all_img/1688663386threads-logo-transparent.png",
-          }}
+          style={{ width: 350, height: 200, resizeMode: "contain" }}
+         source={
+                     require('../assets/roto.png')
+                   }
         />
       </View>
 

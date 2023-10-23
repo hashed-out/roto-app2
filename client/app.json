@@ -11,6 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "permissions": [
+      "CAMERA_ROLL"
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -21,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.puh.roto"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "df0d5173-b741-48f5-895a-94e3ea039566"
+      }
     }
   }
 }

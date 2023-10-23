@@ -63,10 +63,10 @@ const LoginScreen = () => {
     >
       <View style={{ marginTop: 50 }}>
         <Image
-          style={{ width: 150, height: 100, resizeMode: "contain" }}
-          source={{
-            uri: "https://freelogopng.com/images/all_img/1688663386threads-logo-transparent.png",
-          }}
+          style={{ width: 350, height: 200, resizeMode: "contain" }}
+         source={
+                     require('../assets/roto.png')
+                   }
         />
       </View>
 

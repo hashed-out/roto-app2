@@ -78,17 +78,17 @@ const HomeScreen = () => {
     }
   };
   return (
-    <ScrollView style={{ marginTop: 50, flex: 1, backgroundColor: "white" }}>
-      <View style={{ alignItems: "center", marginTop: 20 }}>
+    <ScrollView style={{ marginTop: 2, flex: 1, backgroundColor: "white" }}>
+      <View style={{ alignItems: "center"}}>
         <Image
-          style={{ width: 60, height: 40, resizeMode: "contain" }}
-          source={{
-            uri: "https://freelogopng.com/images/all_img/1688663386threads-logo-transparent.png",
-          }}
+          style={{ width: 300, height: 200, resizeMode: "contain" }}
+          source={
+            require('../assets/roto.png')
+          }
         />
       </View>
 
-      <View style={{ marginTop: 20 }}>
+      <View style={{ marginTop: 2 }}>
         {posts?.map((post) => (
           <View
             style={{
@@ -107,11 +107,9 @@ const HomeScreen = () => {
                   height: 40,
                   borderRadius: 20,
                   resizeMode: "contain",
-                }}
-                source={{
-                  uri: "https://cdn-icons-png.flaticon.com/128/149/149071.png",
-                }}
-              />
+                }}/>
+               {post?.user?.profilePhoto}
+              
             </View>
 
             <View>

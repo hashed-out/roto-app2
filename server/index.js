@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
-
+const passwordUtils = require('./utils/PasswordUtils.js');
 const app = express();
 const port = 4000;
 const cors = require("cors");
@@ -42,10 +42,11 @@ app.post("/register", async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
     }
-
+    const encryptedpassword=await passwordUtils.hashPassword(password)
+    console.log(encryptedpassword)
     //create a new user
-    const newUser = new User({ name, email, password });
-
+    const newUser = new User({ name, email, password:encryptedpassword });
+console.log(req.body)
     //generate and store the verification token
     newUser.verificationToken = crypto.randomBytes(20).toString("hex");
 
@@ -53,7 +54,7 @@ app.post("/register", async (req, res) => {
     await newUser.save();
 
     //send the verification email to the user
-    sendVerificationEmail(newUser.email, newUser.verificationToken);
+    //sendVerificationEmail(newUser.email, newUser.verificationToken);
 
     res.status(200).json({ message: "Registration successful" });
   } catch (error) {
@@ -123,8 +124,8 @@ app.post("/login", async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Invalid email" });
     }
-
-    if (user.password !== password) {
+    const encryptedpassword=user.password;
+    if (!passwordUtils.comparePassword(password,encryptedpassword)) {
       return res.status(404).json({ message: "Invalid password" });
     }
 
