@@ -91,6 +91,7 @@ const HomeScreen = () => {
       <View style={{ marginTop: 2 }}>
         {posts?.map((post) => (
           <View
+          key={post?._id}
             style={{
               padding: 15,
               borderColor: "#D0D0D0",

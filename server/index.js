@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const passwordUtils = require('./utils/PasswordUtils.js');
+const UserRoutes = require('./routes/UserRoutes.js')
 const app = express();
 const port = 4000;
 const cors = require("cors");
@@ -31,7 +32,7 @@ app.listen(port, () => {
 
 const User = require("./models/user");
 const Post = require("./models/post");
-
+app.use('/api', UserRoutes); 
 //endpoint to register a user in the backend
 app.post("/register", async (req, res) => {
   console.log("hello")
