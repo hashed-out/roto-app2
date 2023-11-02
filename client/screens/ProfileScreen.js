@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { BASE_URL } from "../utils/constants";
 
+
 const ProfileScreen = () => {
   const [user, setUser] = useState("");
   const navigation = useNavigation()
@@ -34,12 +35,14 @@ const ProfileScreen = () => {
       console.log("Cleared auth token");
       navigation.replace("Login")
   }
-
+const handleEditProfile =() =>{
+  navigation.navigate("editProfile")
+}
   return (
     <View style={{ marginTop: 55, padding: 15 }}>
       <View>
         <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{user?.name}</Text>
+          
           <View
             style={{
               paddingHorizontal: 7,
@@ -48,7 +51,7 @@ const ProfileScreen = () => {
               backgroundColor: "#D0D0D0",
             }}
           >
-            <Text>Threads.net</Text>
+            <Text >{user?.name}</Text>
           </View>
         </View>
 
@@ -98,6 +101,7 @@ const ProfileScreen = () => {
               borderWidth: 1,
               borderRadius: 5,
             }}
+            onPress={handleEditProfile}
           >
             <Text>Edit Profile</Text>
           </Pressable>

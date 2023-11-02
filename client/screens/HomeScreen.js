@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image,  } from "react-native";
+import{SearchBar} from "react-native-elements"
 import React, { useEffect, useContext, useState, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode from "jwt-decode";
@@ -87,7 +88,10 @@ const HomeScreen = () => {
           }
         />
       </View>
-
+        <SearchBar
+        placeholder="Search for a post..."
+        onChangeText={this.updateSearch}
+        />
       <View style={{ marginTop: 2 }}>
         {posts?.map((post) => (
           <View

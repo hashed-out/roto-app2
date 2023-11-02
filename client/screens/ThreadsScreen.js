@@ -12,35 +12,19 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import getUserInfo from "../utils/GetProfileInfo";
 
-import DatePicker from "react-native-datepicker"; // Import the date picker library
-import {launchImageLibrary} from 'react-native-image-picker';
+
+
 const ThreadsScreen = () => {
   const { userId, setUserId } = useContext(UserType);
   const [content, setContent] = useState("");
   const [imageSource, setImageSource] = useState(null); // To store the selected image URI
   const [venue, setVenue] = useState("");
   const [eventDate, setEventDate] = useState("");
+  getUserInfo();
 
-  const handleImageSelect = () => {
-    const options = {
-      title: "Select Image",
-      mediaType: 'photo',
-      includeBase64: false,
-      maxHeight: 2000,
-      maxWidth: 2000,
-    };
 
-      launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log("User cancelled image picker");
-      } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
-      } else {
-        setImageSource({ uri: response?.uri });
-      }
-    });
-  }; 
 
 
 
@@ -51,7 +35,7 @@ const ThreadsScreen = () => {
       venue,
       eventDate,
     };
-
+    
     axios
       .post(BASE_URL + "create-post", postData)
       .then((response) => {
@@ -86,7 +70,7 @@ const ThreadsScreen = () => {
             uri: "https://cdn-icons-png.flaticon.com/128/149/149071.png",
           }}
         />
-        <Text>Prathik</Text>
+        <Text>{}</Text>
       </View>
 
       <View style={{ flexDirection: "row", marginLeft: 10 }}>
@@ -100,7 +84,7 @@ const ThreadsScreen = () => {
       </View>
 
       {/* Add an image picker button */}
-      <TouchableOpacity onPress={handleImageSelect}>
+      <TouchableOpacity>
         <Text>Select Image</Text>
       </TouchableOpacity>
 
@@ -118,16 +102,6 @@ const ThreadsScreen = () => {
         placeholder="Venue"
       />
 
-      <DatePicker
-        style={{ width: 200, alignSelf: "center" }}
-        date={eventDate}
-        mode="date"
-        placeholder="Select Event Date"
-        format="YYYY-MM-DD"
-        minDate="2023-01-01"
-        maxDate="2030-12-31"
-        onDateChange={(date) => setEventDate(date)}
-      />
 
       <View style={{ marginTop: 20 }} />
 

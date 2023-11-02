@@ -12,6 +12,7 @@ import ThreadsScreen from "./screens/ThreadsScreen";
 import { Ionicons } from "@expo/vector-icons";
 import ActivityScreen from "./screens/ActivityScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import EditProfile from "./screens/EditProfile";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -101,6 +102,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditProfile"
+          component={EditProfile}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
